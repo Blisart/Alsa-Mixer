@@ -19,7 +19,7 @@ cp Alsa-Mixer/metadata.json ~/.local/share/gnome-shell/extensions/Alsa-Mixer\@Bl
 rm -rf Alsa-Mixer/
 </pre>
 
-Copyright © 2022 - Blisart
+Copyright © 2022 - Blisart<br>
 Fork on Victor Aurélio Santos (git://github.com/hotvic/Alsa-Mixer.git )
 
 License GPLv3
