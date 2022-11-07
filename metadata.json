@@ -1,8 +1,8 @@
 {
     "shell-version": ["3.36.9"],
     "uuid": "Alsa-Mixer@Blisart",
-    "name": "Alsa Mixer", 
+    "name": "Alsa Mixer switcher",
     "original-author": "Blisart",
     "url": "https://github.com/Blisart/Alsa-Mixer/",
-    "description": "Control ALSA output(Master) volume."
+    "description": "Control ALSA output(Master)."
 }

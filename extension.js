@@ -11,7 +11,6 @@ const Me = ExtensionUtils.getCurrentExtension();
 const SPEAKER_ICON = "sp.svg";
 const HEADPHONE_ICON = "hp.svg";
 
-// amixer -c 2 set 'Output Select' 'Speakers'
 const OUTPUT_ITEMS = {
     0: 'Speakers',
     1: 'Headphone'
@@ -27,9 +26,11 @@ function toggleOutput() {
     let [ok, out, err, exit] = GLib.spawn_command_line_sync("amixer -c 2 get '" + MIXER_ELEMENT + "'");
 
     if (ByteArray.toString(out).includes('Item0: \'Headphone\'')) {
-        icon.set_gicon(gicon_headphone)
-    } else {
+        GLib.spawn_command_line_sync("amixer -c 2 set '" + MIXER_ELEMENT + "' '" + OUTPUT_ITEMS["0"] + "'")
         icon.set_gicon(gicon_speakers)
+    } else {
+        GLib.spawn_command_line_sync("amixer -c 2 set '" + MIXER_ELEMENT + "' '" + OUTPUT_ITEMS["1"] + "'")
+        icon.set_gicon(gicon_headphone)
     }
 }
 
@@ -40,13 +41,11 @@ function enable() {
     gicon_speakers = Gio.icon_new_for_string(Me.path + "/icons/" + SPEAKER_ICON);
     gicon_headphone = Gio.icon_new_for_string(Me.path + "/icons/" + HEADPHONE_ICON);
 
-    let [ok, out, err, exit] = GLib.spawn_command_line_sync("sh -c 'cat /sys/bus/hid/devices/*17EF\:604*/fn_lock'");
+    let [ok, out, err, exit] = GLib.spawn_command_line_sync("amixer -c 2 get '" + MIXER_ELEMENT + "'");
 
     if (ByteArray.toString(out).includes('Item0: \'Headphone\'')) {
-        GLib.spawn_command_line_sync("amixer -c 2 set '" + MIXER_ELEMENT + "' '" + OUTPUT_ITEMS["1"] + "'")
         icon.set_gicon(gicon_headphone)
     } else {
-        GLib.spawn_command_line_sync("amixer -c 2 set '" + MIXER_ELEMENT + "' '" + OUTPUT_ITEMS["0"] + "'")
         icon.set_gicon(gicon_speakers)
     }
 
