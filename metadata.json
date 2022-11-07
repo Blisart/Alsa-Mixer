@@ -1,8 +1,8 @@
 {
-    "shell-version": ["3.4.2","3.6.0","3.6.1","3.6.2"], 
-    "uuid": "Alsa-Mixer@so-dicas.info", 
+    "shell-version": ["3.36.9"],
+    "uuid": "Alsa-Mixer@Blisart",
     "name": "Alsa Mixer", 
-    "original-author": "Victor Aurélio Santos",
-    "url": "https://github.com/hotvic/Alsa-Mixer/", 
+    "original-author": "Blisart",
+    "url": "https://github.com/Blisart/Alsa-Mixer/",
     "description": "Control ALSA output(Master) volume."
 }
